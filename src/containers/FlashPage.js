@@ -1,17 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import FlashCard from './FlashCard';
-import DrawButton from '../components/FlashcardButton';
+import { RedButton, GreenButton } from '../components/FlashcardButton';
 import FixedMenu from './FixedMenu';
 import '../App.css';
 
 
 class FlashPage extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      cards: [
+    state = {
+      overview: [
         {front: "includes()", back: "includes() determines whether an array includes a certain element. returns TRUE or FALSE."}, {front: "indexOf()", back: "indexOf() returns the first index at which a given element can be found in the array. Returns -1 if it is not found."},
         {front: "slice()", back:"slice() returns a shallow COPY of a portion of an array into a new array object selected from BEGIN (Inclusive) to END (Non-Inclusive). ORIGINAL ARRAY NOT MUTATED."},
         {front: "splice()", back: "splice() changes the contents of an array by removing existing elements and/or adding new elements."},
@@ -22,29 +19,36 @@ class FlashPage extends Component {
         {front: "substring()", back: "substring() returns a subset of a string between one index START (inclusive) and another END (Non-Inclusive), or through the end of the string (if indexEnd is omitted)."},
         {front: "template", back: "an HTML template must include..."},
       ],
-      currentCard: {}
+      currentCard: {},
+      rejectedCards: [],
     }
-    this.updateCard = this.updateCard.bind(this);
-  }
 
   componentWillMount() {
-    const currentCards = this.props.cards;
+    const currentCards = this.state.overview;
 
     this.setState({
-      cards: currentCards,
-      currentCard: this.getRandomCard(currentCards)
+      overview: currentCards,
+      currentCard: this.getNextCard(currentCards)
     })
   }
 
-  getRandomCard(currentCards) {
+  getNextCard(currentCards) {
     const card = currentCards[Math.floor(Math.random() * currentCards.length)]
     return(card);
   }
 
-  updateCard() {
-    const currentCards = this.props.cards;
+
+  updateCard = () => {
+    const currentCards = this.state.overview;
     this.setState({
-      currentCard: this.getRandomCard(currentCards)
+      currentCard: this.getNextCard(currentCards)
+    })
+  }
+
+  rejectCard = () => {
+    const currentCards = this.state.overview;
+    this.setState({
+        rejectedCards: this.getNextCard(currentCards)
     })
   }
 
@@ -53,12 +57,13 @@ class FlashPage extends Component {
       <div className="App">
         <FixedMenu inverted />
         <div className='cardRow'>
-          <FlashCard front={this.props.cards.frontCard}
-                     back={this.props.cards.backCard} 
+          <FlashCard front={this.state.currentCard.front}
+          back={this.state.currentCard.back} 
           />
         </div>
         <div className='buttonRow'>
-          <DrawButton drawCard={this.updateCard} />
+          <RedButton rejectCard={this.rejectCard} />
+          <GreenButton drawCard={this.updateCard} />
         </div>
       </div>
     );
