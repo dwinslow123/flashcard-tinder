@@ -19,7 +19,7 @@ import {
 
 
 class HomePageLayout extends Component {
-
+  
   render() {
     return (
       <div className='landingPage'>

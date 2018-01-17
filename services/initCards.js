@@ -1,42 +1,44 @@
 /*
- flashcards.js ver. 1.0.1
- 2017-12-13T11:24:48
- pinecone062@gmail.com
- ------------------------------------------------------------
- Read flashcards.json file and place into our Heroku Mongo
- Database after first deleting the current set of cards to
- easily allow a new collection to be inserted for a basic 
- change in schema.
- ------------------------------------------------------------
-*/
+ * FILENAME:  initCards.js
+ * PROJECT:   flashcards-tinder
+ * CREATED:   2017-12-13T11:24:48
+ * MODIFIED:  2018-01-16T21:26:37
+ * VERSION:   0.1.0
+ * ABOUT:     Read flashcards.json file and place into our Heroku Mongo
+ 	      Database after first deleting the current set of cards to
+              easily allow a new collection to be inserted for a basic 
+              change in schema.
+ * AUTHORS:   Steven O'Campo, Dan Winslow, Latoyya Smith, Wesley Harvey
+ * NOTES:    
+ *********************************************************************************/
 
+require('dotenv').config({path: '../.env'});
 const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
 const fs = require('fs');
-const local = process.argv[2];
-console.log(`local: ${local}`);
+const keys = require('../config/keys');
 
 // FLASHCARDS_JSON
-const FLASHCARDS_JSON = './flashcards.json';
+const FLASHCARDS_JSON = '../config/cards.json';
 
 // MONGODB_URI
-const MONGODB_URI = local === 'local' ? 'mongodb://localhost:27017' :  process.env.MONGODB_URI;
-const DISPLAYABLE_URI = MONGODB_URI.replace(/:[^:]*@/, ':<PASSWORD>@');
+const MONGO_URI = keys.mongoURI;
+const DISPLAYABLE_URI = MONGO_URI.replace(/:[^:]*@/, ':<PASSWORD>@');
 
 // DATABASE AND COLLECTION
-const DBNAME = process.env.MONGODB_DATABASE;
+const DB_NAME = process.env.MONGODB_DB_NAME;
 const COLLECTION = 'flashcards';
 
 // read flashcards as an array of objects
 const flashcards = JSON.parse(fs.readFileSync(FLASHCARDS_JSON, 'utf8'));
 
 // connect as a client
-MongoClient.connect(MONGODB_URI, function(err, client) {
+MongoClient.connect(MONGO_URI, function(err, client) {
   assert.equal(null, err);
   console.log(`\u001b[32mOpened\u001b[0m client connection to Mongo Server: \u001b[35m${DISPLAYABLE_URI}\u001b[0m`);
 
   // obtain references to database and collection objects
-  const db = client.db(DBNAME);
+  const db = client.db(DB_NAME);
   const collection = db.collection(COLLECTION);
 
   // drop the collection before adding flashcards

@@ -24,9 +24,9 @@ class App extends Component {
           <div>
             {/* <Header /> */}
             <FixedMenu />
-            <Route exact path="/HomePageLayout" component={HomePageLayout} />
+            <Route exact path="/" component={HomePageLayout} />
             {/* <Route exact path="/api/current_user" component={CurrentUser} />*/}
-            <Route exact path="/javascript" component={JavaScript} />
+            <Route path="/javascript" component={JavaScript} />
             <Route path="/flashPage" component={FlashPage} />
           </div>
         </BrowserRouter>
