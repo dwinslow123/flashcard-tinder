@@ -1,41 +1,51 @@
 {
-  "name": "flashcard-tinder",
-  "version": "0.1.0",
-  "private": true,
-  "proxy": {
-    "/auth/google": {
-      "target": "http://localhost:3001"
-    }
-  },
-  "dependencies": {
-    "axios": "^0.17.1",
-    "concurrently": "^3.5.1",
-    "cookie-session": "^2.0.0-beta.3",
-    "cors": "^2.8.4",
-    "ejs": "^2.5.7",
-    "express": "^4.16.2",
-    "mongodb": "^3.0.0-rc0",
-    "mongoose": "^4.13.6",
-    "nodemon": "^1.14.1",
-    "passport": "^0.4.0",
-    "passport-google-oauth20": "^1.0.0",
-    "react": "^16.1.1",
-    "react-dom": "^16.1.1",
-    "react-redux": "^5.0.6",
-    "react-router-dom": "^4.2.2",
-    "react-scripts": "1.0.17",
-    "react-transition-group": "^2.2.1",
-    "redux": "^3.7.2",
-    "redux-promise": "^0.5.3",
-    "redux-thunk": "^2.2.0",
-    "semantic-ui-react": "^0.77.0"
+  "name": "flashcard-tinder-server",
+  "version": "1.0.0",
+  "description": "Backend server for flashcard-tinder app",
+  "contributors": [
+    "Steven O'Campo",
+    "Dan Winslow",
+    "Latoyya Smith",
+    "John Wells",
+    "Wesley Harvey"
+  ],
+  "main": "server/index.js",
+  "keywords": [
+    "flashcards"
+  ],
+  "engines": {
+    "node": "8.9.3",
+    "npm": "5.6.0",
+    "yarn": "1.3.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "server": "nodemon Server.js",
-    "dev": "concurrently \"yarn run server\" \"yarn run start\"",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "start": "node index.js",
+    "server": "nodemon index.js",
+    "client": "cd client && yarn start",
+    "dev": "concurrently --kill-others-on-fail \"yarn run server\" \"yarn run client\"",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false cd client && { yarn && yarn build; }"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MagicalLambda/flashcard-tinder"
+  },
+  "author": "Magical Lambda Team",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MagicalLambda/flashcard-tinder"
+  },
+  "homepage": "https://github.com/MagicalLambda/flashcard-tinder#readme",
+  "dependencies": {
+    "cookie-session": "^2.0.0-beta.3",
+    "dotenv": "^4.0.0",
+    "express": "^4.16.2",
+    "mongoose": "^4.13.9",
+    "nodemon": "^1.14.11",
+    "passport": "^0.4.0",
+    "passport-google-oauth20": "^1.0.0"
+  },
+  "devDependencies": {
+    "concurrently": "^3.5.1"
   }
 }

@@ -1,18 +1,18 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
 # dependencies
-/node_modules
+node_modules
 
 # testing
-/coverage
+coverage
 
 # production
-/build
-/cardsTest
-keys.js
+build
+cardsTest
 
 # misc
 .DS_Store
+.env
 .env.local
 .env.development.local
 .env.test.local
