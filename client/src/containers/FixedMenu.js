@@ -18,16 +18,15 @@ import {
   // Image
 } from 'semantic-ui-react'
 
-// const felix = '../assets/Felix_the_Cat.png'
-
 class FixedMenu extends Component { 
 
   render() {
     return (
       <Menu  inverted fixed='top' size='large'>
         <Container>
-          <Menu.Item as='a' href="/">Home</Menu.Item>
+        <Menu.Item as='a' href="/">Studdy Buddy</Menu.Item>
           <Menu.Menu position='right'>
+          <Menu.Item as='a' href="/">Home</Menu.Item>
             <Menu.Item>
 <<<<<<< HEAD:src/containers/FixedMenu.js
               <Modal trigger={<Button as='a' primary>Sign Up</Button>} basic>

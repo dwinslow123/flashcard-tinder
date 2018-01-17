@@ -10,15 +10,12 @@ import {
   Grid,
   Header,
   Icon,
-//  Menu,
   Segment,
-  Visibility,
+//  Menu,
+  Visibility
 // Responsive,
 //  Modal,
-  Image
 } from 'semantic-ui-react'
-
-const felix = '../assets/Felix_the_Cat.png'
 
 
 class HomePageLayout extends Component {
@@ -27,7 +24,7 @@ class HomePageLayout extends Component {
     return (
       <div className='landingPage'>
           <Segment
-            inverted
+            
             textAlign='center'
             vertical
             className='top-container'
@@ -35,22 +32,21 @@ class HomePageLayout extends Component {
             <Container text>
               <Header
                 as='h1'
-                content='Welcome to Studdy Buddy!'
+                content='Studdy Buddy'
                 inverted
-                style={{ fontSize: '4em', fontWeight: 'normal', marginBottom: 0, marginTop: '.5em' }}
+                style={{ fontSize: '7em', fontWeight: 'normal', marginBottom: 0, marginTop: '1.1em', fontFamily: 'Permanent Marker' }}
               />
 
-              <Segment basic>
-                <Image src={felix} size='small' centered />
-              </Segment>
+              <Icon name='line chart' size='massive' inverted />
+
               <Header
                 as='h2'
-                content='Learn some languages.'
+                content='Level Up Your Knowledge Now'
                 inverted
-                style={{ fontSize: '1.7em', fontWeight: 'normal' }}
+                style={{ fontSize: '1.7em', fontWeight: 'normal', fontFamily: 'Titillium Web' }}
               />
-              <Button primary size='huge' href='#languages'>
-                Get Started
+              <Button size='huge' href='#languages' basic color='green'>
+                Level Up
                 <Icon name='right arrow' />
               </Button>
             </Container>

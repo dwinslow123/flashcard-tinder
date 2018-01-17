@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { Divider, Image } from 'semantic-ui-react'
-import { Link } from 'react-router-dom';
+import { Divider, Image, Icon } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
 import '../App.css';
 import '../style.css';
 
@@ -32,8 +32,10 @@ class JavaScript extends Component {
              <a href="/flashpage"><li>Apply, Call & Bind</li></a>
              <a href="/flashpage"><li>Scope</li></a>
           </ul>
-          <div id="btn-back" >
-             <Link to="/HomePageLayout"><img src="/assets/back-button.png" className="btn-back" alt="back button"/></Link>
+          <div className="btn-back">
+            <Link to="/HomePageLayout">
+              <Icon name='arrow circle left' size='huge' inverted />
+            </Link>
           </div>
         </div>
         );
