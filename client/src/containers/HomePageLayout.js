@@ -69,4 +69,3 @@ class HomePageLayout extends Component {
 }
 
 export default HomePageLayout; 
-

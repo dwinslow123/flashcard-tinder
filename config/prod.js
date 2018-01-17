@@ -15,4 +15,3 @@ module.exports = {
   googleCallbackURL:  process.env.GOOGLE_CALLBACK_URL,
   mongoURI:           process.env.MONGODB_URI,
   cookieKey:          process.env.COOKIE_KEY,
-}
