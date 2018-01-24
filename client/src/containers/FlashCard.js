@@ -16,10 +16,10 @@ class FlashCard extends Component {
       <div className='card-container'>
         <div className='card'>
           <div className='front'>
-            <div className='frontCard'>{this.props.front}</div>
+            <div className='frontCard'>{this.props.frontCard}</div>
           </div>
           <div className='back'>
-            <div className='backCard' >{this.props.back}</div>
+            <div className='backCard' >{this.props.backCard}</div>
           </div>
         </div>
       </div>
